@@ -1,0 +1,145 @@
+.index_wrapper {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 320px;
+}
+
+header .index_wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 1.2rem;
+}
+
+header span {
+    color: #707070;
+}
+
+
+main .index_wrapper {
+border: 1px solid #575757;
+margin-bottom: 5px;
+}
+
+.title {
+    width: calc(100% - 35px);
+    margin: 40px auto;
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #3583b0;
+    justify-content: center;
+    border-bottom: 1px solid #575757;
+}
+
+.title:hover {
+    text-shadow: 0 1px 8px #5089e9d6;
+}
+
+.card {
+    width: calc(100% - 35px);
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.sale {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: red;
+    opacity: .6;
+    position: absolute;
+    top: -50px;
+    left: 25px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.sale p {
+    margin: 5px;
+}
+
+.photo, .inf {
+    width: 50%;
+    height: auto;
+    /*min-width: 200px;*/
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.large_img, .text {
+    box-sizing: border-box;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.large_img {
+    width: 50%;
+    align-self: center;
+}
+
+.small {
+    width: calc(100% - 10px);
+    height: auto;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.small img {
+    height: auto;
+    width: 20%  ;
+    margin: 0 10px;
+    transition: transform .3s;
+}
+
+.small img:hover {
+    transform: scale(1.5);
+}
+
+h4 {
+    margin: 0;
+    border-bottom: 1px solid #575757;
+}
+
+.text p {
+    font-size: .7rem;
+    font-weight: normal;
+    margin: 5px 0;
+}
+
+.description {
+    margin: 0 auto;
+    width: calc(100% - 35px);
+}
+
+footer .index_wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 2rem;
+}
+
+footer p {
+    font-size: .6rem;
+    margin: 0;
+}
+
+@media screen and (max-width: 886px) {
+    .photo, .inf {
+        width: 100%;
+    }
+    .title {
+        font-size: 2rem;
+    }
+}
