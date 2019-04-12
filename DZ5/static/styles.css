@@ -9,7 +9,7 @@ body {
 
 .header {
     height: 670px;
-    background: url("../img/PUT YOUR BACKGROUND HERE.png") no-repeat top center ;
+    background: url("../img/background.png") no-repeat top center ;
     background-size: cover;
     color: white;
 }
