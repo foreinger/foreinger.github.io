@@ -827,7 +827,7 @@ body {
         display: block;
     }
 
-    .team__item {
+    .teamItems__item {
         width: calc(50% - 10px);
     }
 
@@ -878,7 +878,7 @@ body {
         margin-bottom: 35px;
     }
 
-    .works__item {
+    .worksItems__item {
         width: 33.33%;
     }
 
