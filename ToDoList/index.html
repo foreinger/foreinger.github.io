@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="script/script.js"></script>
+    <title>ToDoToDay</title>
+</head>
+<body>
+    <header class="wrapper">
+        <div class="logo">
+            <img class="logo__icon" src="svg/mainIcon.svg" alt="ToDo Icon">
+            <h1 class="logo__name">ToDo Today</h1>
+        </div>
+        <div class="newItem wrapper">
+            <form class="inputBlock">
+                <label for="inputBlock__text"></label>
+                <input placeholder="Type your task" class="inputBlock__text" maxlength="110" type="text" id="inputBlock__text" autocomplete="off">
+                <button class="inputBlock__button" id="newTask"></button>
+            </form>
+        </div>
+    </header>
+    <main class="wrapper list">
+        <div class="listHeader">
+            <div class="listHeader__column listHeader__column_date">
+                <p class="listHeader__columnTitle">Date,time</p>
+                <button class="listHeader__sortButton dateSort">
+                    <img src="svg/sort.svg" alt="sort">
+                </button>
+            </div>
+            <div class="listHeader__column listHeader__column_priority">
+                <p class="listHeader__columnTitle">Priority</p>
+                <button class="listHeader__sortButton prioritySort">
+                    <img src="svg/sort.svg" alt="sort">
+                </button>
+            </div>
+            <div class="listHeader__column listHeader__column_text">
+                <p class="listHeader__columnTitle">ToDoText</p>
+                <button class="listHeader__sortButton textSort">
+                    <img src="svg/sort.svg" alt="sort">
+                </button>
+            </div>
+            <div class="listHeader__column listHeader__column_status">
+                <p class="listHeader__columnTitle">Completed / incomplete</p>
+                <button class="listHeader__sortButton statusSort">
+                    <img src="svg/sort.svg" alt="sort">
+                </button>
+            </div>
+        </div>
+        <ul class="listBody" id="listBody"></ul>
+        <form class="searchBlock">
+            <label for="searchBlock__text"></label>
+            <input placeholder="Search" class="searchBlock__text" maxlength="80" type="text" id="searchBlock__text" autocomplete="off">
+        </form>
+    </main>
+    <footer class="wrapper">
+
+    </footer>
+    <div class="cover"></div>
+    <div class="confirm">
+        <h4 class="confirm__title">You insist on the removal?</h4>
+        <div class="confirm__buttons">
+            <button class="confirm__button confirm__button_yes">delete</button>
+            <button class="confirm__button confirm__button_no">cancel</button>
+        </div>
+    </div>
+</body>
+</html>

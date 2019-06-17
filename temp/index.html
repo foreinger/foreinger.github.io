@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var buttonpressed = false;
+
+        function waitForIt() {
+            if (!buttonpressed ) {
+                setTimeout(waitForIt,25);
+            } else {
+                document.getElementById('info').value='ok';
+                buttonpressed = false;
+            }
+        }
+
+        function startSomething() {
+            document.getElementById('info').value='';
+            waitForIt();
+            document.getElementById('info').value='waiting';
+        }
+
+        function setButtonPressed() {
+            buttonpressed = true;
+        }
+
+    </script>
+</head>
+<body>
+<br>
+<input type='text' style="width: 200px;" id="info" />
+<br>
+<input type='button' style="width: 200px;" value="Start" onclick="javascript: startSomething();">
+<br>
+<br>
+<input type='button' style="width: 200px;" value="Continue" onclick="javascript: setButtonPressed();">
+</body>
+
+</html>
