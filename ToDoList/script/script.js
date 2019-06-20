@@ -1,10 +1,31 @@
 //global variable
 // max length of task text
-let maxLength = 110;
+let maxLength = 250;
 // last sort method
 let sortedBy;
 // indicator and variable for current object for deletion func
 let indicator, objForDel;
+
+// date option for small screen
+let dateOptions;
+if (window.innerWidth < 480){
+    dateOptions = {
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    };
+} else {
+    dateOptions = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+    };
+}
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -37,33 +58,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // add new task
-    let addButton = document.getElementById("newTask");
+    // add new task handler
+    let addButton = document.getElementById("newTask"),
+        inputField = document.querySelector(".inputBlock__text");
 
+    // focus on input field
+    inputField.focus();
+
+    inputField.addEventListener("keypress", function () {
+        if (event.which === 13) {
+            addButton.click();
+        }
+    });
     addButton.addEventListener("click", function () {
-        let input = document.getElementsByClassName("inputBlock__text")[0].value;
+        let text = inputField.value;
         // check the input and if all right create new task
-        validate(input, currentId);
+        validate(text, currentId);
         // clear input field
-        document.getElementsByClassName("inputBlock__text")[0].value = "";
+        inputField.value = "";
+        // return focus on input field
+        inputField.focus();
         // sequence number for the next line
         currentId++;
     });
-    // return focus on input field
-    document.getElementsByClassName("inputBlock__text")[0].focus();
 
-    // bind event handler to buttons
+    // bind event handler to other buttons
     // bind handler to buttons on confirmation window
     // "NO"
-    document.getElementsByClassName("confirm__button_no")[0].addEventListener("click", function () {
-        document.getElementsByClassName("cover")[0].style.display = "none";
-        document.getElementsByClassName("confirm")[0].style.display = "none";
+    document.querySelector(".confirm__button_no").addEventListener("click", function () {
+        document.querySelector(".cover").style.display = "none";
+        document.querySelector(".confirm").style.display = "none";
         indicator = false;
     });
     // "YES"
-    document.getElementsByClassName("confirm__button_yes")[0].addEventListener("click", function () {
-        document.getElementsByClassName("cover")[0].style.display = "none";
-        document.getElementsByClassName("confirm")[0].style.display = "none";
+    document.querySelector(".confirm__button_yes").addEventListener("click", function () {
+        document.querySelector(".cover").style.display = "none";
+        document.querySelector(".confirm").style.display = "none";
         indicator = true;
     });
 
@@ -107,8 +137,8 @@ function validate(formValue, currentId) {
         alert(`it is not s string`);
     }
     // length check
-    else if (formValue.length < 0 && formValue.length > 114) {
-        alert("type form 1 to 114 characters")
+    else if (formValue.length < 0 && formValue.length > 250) {
+        alert("type form 1 to 250 characters")
     }
     // create a new task
     else {
@@ -116,8 +146,7 @@ function validate(formValue, currentId) {
     }
 }
 
-function addTask(formValue, currentId) {
-
+function addTask(taskText, currentId) {
     // current state of task list
     let taskList = JSON.parse(localStorage.getItem("taskList"));
 
@@ -135,7 +164,7 @@ function addTask(formValue, currentId) {
         "id": currentId,
         "curDate": currentDate,
         "priority": priority,
-        "task": formValue,
+        "task": taskText,
         "status": status
     };
 
@@ -151,15 +180,15 @@ function dateNormalizer(dateString) {
     let currentDate = new Date(dateString);
 
     // date and time display options
-    let options = {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-    };
-    return currentDate.toLocaleString("ru", options);
+    // let options = {
+    //     year: 'numeric',
+    //     month: 'numeric',
+    //     day: 'numeric',
+    //     hour: 'numeric',
+    //     minute: 'numeric',
+    //     second: 'numeric',
+    // };
+    return currentDate.toLocaleString("ru", dateOptions);
 
 }
 
@@ -293,9 +322,27 @@ function displayListItem(currentObject) {
 function editItem() {
     let currentId = this.closest("li").id;
 
+    // set the caret position
+    let range = document.createRange(),
+        selection = window.getSelection(),
+        currentElement = this;
+
+    range.setStart(currentElement, 1);
+    range.collapse(true);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    // currentElement.focus();
+
+    // scroll to the caret position
+    this.scrollTop = this.scrollHeight - this.clientHeight;
+
+
     this.addEventListener("keypress", function () {
         if (event.which === 13) {
             this.blur();
+        }
+        else if (this.innerText.length >= maxLength) {
+            event.preventDefault();
         }
     });
 
@@ -316,6 +363,9 @@ function editItem() {
         }
         // add updated object to local storage
         localStorage.setItem("taskList", JSON.stringify(taskList));
+
+        // return scroll to top
+        this.scrollTop = 0;
     });
 
 
@@ -455,19 +505,8 @@ function bindButtonEvent(currentLine) {
     doneButton.addEventListener("click", changeStatus);
 
     ////edit task
-    edit.addEventListener("click", editItem);
+    edit.addEventListener("focus", editItem);
 
-    ////char limit
-    edit.addEventListener("input", function () {
-        let currentStr = this.innerText;
-
-        // if input is more than 110 chars, element lost focus
-        if (currentStr.length > maxLength) {
-            event.preventDefault();
-            this.blur();
-        }
-    });
-    //// edit button
     editButton.addEventListener("click", function () {
        this.previousSibling.focus();
     });

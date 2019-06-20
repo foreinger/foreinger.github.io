@@ -1,9 +1,16 @@
 * {
     margin: 0;
     padding: 0;
-    /*box-sizing: border-box;*/
+    box-sizing: border-box;
 }
 
+:root {
+    /*width of columns*/
+    --colDate: 16.66%;
+    --colPriority: 8.33%;
+    --colTask: 58.31%;
+    --colStatus: 16.66%;
+}
 html, body {
     height: 100%;
 }
@@ -110,22 +117,20 @@ li:hover {
 }
 
 .listHeader__column_date {
-    width: 16.66%;
-    min-width: 80px;
+    width: var(--colDate);
     text-align: center;
 }
 
 .listHeader__column_priority {
-    width: 8.33%;
-    min-width: 55px;
+    width: var(--colPriority);
 }
 
 .listHeader__column_text {
-    width: 58.31%;
+    width: var(--colTask);
 }
 
 .listHeader__column_status {
-    width: 16.66%;
+    width: var(--colStatus);
 }
 
 .listHeader__columnTitle {
@@ -169,7 +174,7 @@ li:hover {
 }
 
 .listBody__colDate {
-    width: 16.66%;
+    width: var(--colDate);
     min-width: 80px;
     display: flex;
     align-items: center;
@@ -183,7 +188,7 @@ li:hover {
 }
 
 .listBody__colPriority {
-    width: 8.33%;
+    width: var(--colPriority);
     min-width: 55px;
     display: flex;
 }
@@ -238,15 +243,22 @@ li:hover {
 }
 
 .listBody__colTask {
-    width: 58.31%;
+    width: var(--colTask);
     display: flex;
     align-items: center;
 }
 
 .listBody__colTask_text {
     width: 96%;
+    max-height: 100%;
     padding: 1px;
-    margin: 5px 0;
+    margin: 0;
+    line-height: 1.15;
+    overflow: hidden;
+}
+
+.listBody__colTask_text:focus {
+    overflow-y: scroll;
 }
 
 .listBody__colTask_editButton {
@@ -266,7 +278,7 @@ li:hover {
 }
 
 .listBody__colStatus {
-    width: 16.66%;
+    width: var(--colStatus);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -276,7 +288,7 @@ li:hover {
     margin: 5px;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 25px;
     outline: 0;
 }
 
@@ -427,4 +439,29 @@ li:hover {
 }
 ::-webkit-scrollbar-track:hover{
     background-color: #eff9ff61;
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --colDate: 8.33%;
+        --colPriority: 8.33%;
+        --colTask: 74.97%;
+        --colStatus: 8.33%;
+    }
+
+    .listBody__row {
+        height: 100px;
+    }
+
+    .listBody__colStatus {
+        display: block;
+        /*flex-direction: column;*/
+    }
+
+    .delButton {
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid transparent;
+    }
 }

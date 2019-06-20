@@ -16,11 +16,11 @@
             <h1 class="logo__name">ToDo Today</h1>
         </div>
         <div class="newItem wrapper">
-            <form class="inputBlock">
+            <div class="inputBlock">
                 <label for="inputBlock__text"></label>
-                <input placeholder="Type your task" class="inputBlock__text" maxlength="110" type="text" id="inputBlock__text" autocomplete="off">
-                <button class="inputBlock__button" id="newTask"></button>
-            </form>
+                <input placeholder="Type your task" class="inputBlock__text" maxlength="250" type="text" id="inputBlock__text" autocomplete="off">
+                <button class="inputBlock__button" id="newTask" type="button"></button>
+            </div>
         </div>
     </header>
     <main class="wrapper list">
@@ -44,7 +44,7 @@
                 </button>
             </div>
             <div class="listHeader__column listHeader__column_status">
-                <p class="listHeader__columnTitle">Completed / incomplete</p>
+                <p class="listHeader__columnTitle">Control</p>
                 <button class="listHeader__sortButton statusSort">
                     <img src="svg/sort.svg" alt="sort">
                 </button>
@@ -69,3 +69,5 @@
     </div>
 </body>
 </html>
+
+
