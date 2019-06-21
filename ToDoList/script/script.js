@@ -574,12 +574,12 @@ function sortList (sortingMethod) {
     else if (sortingMethod === 4) {
         if (sortingMethod !== sortedBy) {
             taskList.sort(function (a, b) {
-                return a.status - b.status;
+                return b.status - a.status;
             });
         sortedBy = sortingMethod;
         } else {
             taskList.sort(function (a, b) {
-                return b.status - a.status;
+                return a.status - b.status;
             });
         sortedBy = undefined;
         }

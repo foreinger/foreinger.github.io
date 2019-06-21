@@ -176,7 +176,7 @@ li:hover {
     list-style-type: none;
     display: flex;
     opacity: 1;
-    transition: opacity 100ms linear, height 100ms linear;
+    transition: opacity 100ms linear, height 100ms linear, background-color .2s;
 }
 
 .listBody__colDate {
@@ -189,8 +189,10 @@ li:hover {
 }
 
 .listBody__colDate time {
+    display: flex;
+    justify-content: center;
     text-align: center;
-    /*width: 50%;*/
+    width: 50%;
 }
 
 .listBody__colPriority {
@@ -260,10 +262,14 @@ li:hover {
     margin: 0;
     line-height: 1.15;
     overflow: hidden;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom .2s;
 }
 
 .listBody__colTask_text:focus {
     overflow-y: scroll;
+    outline: 0;
+    border-bottom: 1px solid #25AE88;
 }
 
 .listBody__colTask_editButton {
@@ -420,11 +426,13 @@ li:hover {
     border-left: 0;
     border-top: 0;
     border-right: 0;
-    border-bottom: 2px solid #25AE88;
+    border-bottom: 2px solid #25AE88; /*#25AE88   #d75a4a*/
+    transition: border-bottom .2s;
 }
 
 .searchBlock__text:focus {
     outline: 0;
+    border-bottom: 1px solid #25AE88;
 }
 
 /*style scroll-bar*/
@@ -475,6 +483,11 @@ li:hover {
     .listBody__colDate {
         min-width: unset;
     }
+
+    .listBody__colDate time {
+        width: auto;
+    }
+
 
     .listBody__colStatus {
         display: flex;
