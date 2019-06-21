@@ -93,6 +93,20 @@ li:hover {
 
 }
 
+.inputBlock__requestButton {
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../svg/download.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.inputBlock__requestButton:focus {
+    outline: 0;
+}
+
 .inputBlock__button:active {
     transform: scale(.9);
 
@@ -222,6 +236,10 @@ li:hover {
 }
 
 .listBody__colPriorityArrow_up {
+    background-image: url("../svg/up-arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 15px;
     height: 15px;
 }
@@ -236,6 +254,10 @@ li:hover {
 }
 
 .listBody__colPriorityArrow_down {
+    background-image: url("../svg/down-arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 15px;
     height: 15px;
 }
@@ -273,7 +295,13 @@ li:hover {
 }
 
 .listBody__colTask_editButton {
+    background-image: url("../svg/edit.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .5;
     width: 15px;
+    height: 15px;
     margin: 0 5px;
     display: flex;
     align-items: flex-start;
@@ -287,11 +315,6 @@ li:hover {
     transform: scale(0.9);
 }
 
-.listBody__colTask_editButtonImg {
-    width: 15px;
-    opacity: .5;
-}
-
 .listBody__colStatus {
     width: var(--colStatus);
     display: flex;
@@ -300,6 +323,10 @@ li:hover {
 }
 
 .doneButton {
+    background-image: url("../svg/done.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 5px;
     width: 50px;
     height: 50px;
@@ -322,6 +349,10 @@ li:hover {
 }
 
 .delButton {
+    background-image: url("../svg/del.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 5px;
     width: 50px;
     height: 50px;
@@ -462,8 +493,8 @@ li:hover {
     :root {
         /*--colDate: 8.33%;*/
         /*--colPriority: 8.33%;*/
-        --colTask: 66.64%;
-        --colStatus: 8.33%;
+        --colTask: 63.64%;
+        --colStatus: 11.33%;
     }
 
     .inputBlock {
@@ -495,13 +526,13 @@ li:hover {
     }
 
     .delButton {
-        margin: 0;
+        margin: 2px auto;
         width: calc(100% - 10px);
         height: calc(50% - 10px);
     }
 
     .doneButton {
-        margin: 0;
+        margin: 2px auto;
         width: calc(100% - 10px);
         height: calc(50% - 10px);
         border-radius: 25px;

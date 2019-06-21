@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     addButton.addEventListener("click", function () {
+        alert(window.innerWidth);
+        alert(window.outerWidth);
         let text = inputField.value;
         // check the input and if all right create new task
         validate(text, currentId);
@@ -207,24 +209,14 @@ function displayListItem(currentObject) {
         let colPriority = document.createElement("div"),
             priorityValue = document.createElement("div"),
             priorityControl = document.createElement("div"),
-            arrowUpImg = document.createElement("img"),
-            arrowDownImg = document.createElement("img"),
             arrowUpButton = document.createElement("button"),
             arrowDownButton = document.createElement("button");
 
         //// arrow Up tag formation
-        arrowUpImg.src = "svg/up-arrow.svg";
-        arrowUpImg.alt = "up";
-        arrowUpImg.classList.add("listBody__colPriorityArrow");
         arrowUpButton.classList.add("listBody__colPriorityArrow_up");
-        arrowUpButton.appendChild(arrowUpImg);
 
         //// arrow Down tag formation
-        arrowDownImg.src = "svg/down-arrow.svg";
-        arrowDownImg.alt = "down";
-        arrowDownImg.classList.add("listBody__colPriorityArrow");
         arrowDownButton.classList.add("listBody__colPriorityArrow_down");
-        arrowDownButton.appendChild(arrowDownImg);
 
         //// priority value tag formation
         priorityValue.className = "listBody__colPriorityValue";
@@ -243,7 +235,6 @@ function displayListItem(currentObject) {
         // third column
         let colTask = document.createElement("div"),
             editButton = document.createElement("button"),
-            editButtonImg = document.createElement("img"),
             colText = document.createElement("p");
 
         //// text tag formation
@@ -252,11 +243,7 @@ function displayListItem(currentObject) {
         colText.innerText = currentObject.task;
 
         //// button tag formation
-        editButtonImg.src = "svg/edit.svg";
-        editButtonImg.alt = "edit";
-        editButtonImg.className = "listBody__colTask_editButtonImg";
         editButton.className = "listBody__colTask_editButton";
-        editButton.appendChild(editButtonImg);
 
         //// task tag formation
         colTask.className = "listBody__colTask";
@@ -266,25 +253,13 @@ function displayListItem(currentObject) {
         // fourth column
         let colStatus = document.createElement("div"),
             doneButton = document.createElement("button"),
-            doneImg = document.createElement("img"),
-            delButton = document.createElement("button"),
-            delImg = document.createElement("img");
-
-        //// delete button pict tag formation
-        delImg.src = "svg/del.svg";
-        delImg.alt = "delete";
+            delButton = document.createElement("button");
 
         //// delete button tag formation
         delButton.className = "delButton";
-        delButton.appendChild(delImg);
 
-        //// done button pict tag formation
-        doneImg.src = "svg/done.svg";
-        doneImg.alt = "done";
-
-        //// dene button tag formation
+        //// done button tag formation
         doneButton.className = "doneButton";
-        doneButton.appendChild(doneImg);
 
         //// fourth column tag formation
         colStatus.className = "listBody__colStatus";
@@ -623,4 +598,34 @@ function search(str) {
         }
     }
 
+}
+
+function serverRequest() {
+
+    let xhttp = new XMLHttpRequest(),
+        url = "https://jsonplaceholder.typicode.com/todos/";
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(this.responseText);
+            console.log(response)
+            for (let i = 0; i < response.length; i++) {
+                // set properties to the necessary format
+                response[i].curDate = "unknown";
+                response[i].priority = 1;
+                response[i].task = response[i].title;
+                response[i].status = +response[i].completed;
+                // and delete unnecessary properties
+                delete response[i].title;
+                delete response[i].completed;
+                delete response[i].userId;
+                // display loaded list
+                displayListItem(response[i]);
+
+            }
+        } else {
+            console.log(this.readyState)
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
 }
