@@ -123,6 +123,7 @@ li:hover {
 
 .listHeader__column_date {
     width: var(--colDate);
+    min-width: 80px;
     text-align: center;
 }
 
@@ -180,6 +181,7 @@ li:hover {
 
 .listBody__colDate {
     width: var(--colDate);
+    min-width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -188,7 +190,7 @@ li:hover {
 
 .listBody__colDate time {
     text-align: center;
-    width: 50%;
+    /*width: 50%;*/
 }
 
 .listBody__colPriority {
@@ -462,8 +464,16 @@ li:hover {
         justify-content: center;
     }
 
+    .listHeader__column_date {
+        min-width: unset;
+    }
+
     .listBody__row {
         height: 100px;
+    }
+
+    .listBody__colDate {
+        min-width: unset;
     }
 
     .listBody__colStatus {
