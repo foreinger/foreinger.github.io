@@ -10,7 +10,7 @@ let indicator, objForDel;
 let dateOptions;
 if (window.innerWidth < 480){
     dateOptions = {
-        month: 'numeric',
+        month: 'long',
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
@@ -179,15 +179,6 @@ function addTask(taskText, currentId) {
 function dateNormalizer(dateString) {
     let currentDate = new Date(dateString);
 
-    // date and time display options
-    // let options = {
-    //     year: 'numeric',
-    //     month: 'numeric',
-    //     day: 'numeric',
-    //     hour: 'numeric',
-    //     minute: 'numeric',
-    //     second: 'numeric',
-    // };
     return currentDate.toLocaleString("ru", dateOptions);
 
 }
@@ -331,7 +322,6 @@ function editItem() {
     range.collapse(true);
     selection.removeAllRanges();
     selection.addRange(range);
-    // currentElement.focus();
 
     // scroll to the caret position
     this.scrollTop = this.scrollHeight - this.clientHeight;

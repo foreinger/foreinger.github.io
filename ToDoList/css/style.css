@@ -10,6 +10,7 @@
     --colPriority: 8.33%;
     --colTask: 58.31%;
     --colStatus: 16.66%;
+
 }
 html, body {
     height: 100%;
@@ -20,6 +21,10 @@ button {
     outline: 0;
     border: 1px solid transparent;
     transition: transform .2s;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 li {
@@ -175,7 +180,6 @@ li:hover {
 
 .listBody__colDate {
     width: var(--colDate);
-    min-width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,7 +193,6 @@ li:hover {
 
 .listBody__colPriority {
     width: var(--colPriority);
-    min-width: 55px;
     display: flex;
 }
 
@@ -270,6 +273,10 @@ li:hover {
 
 .listBody__colTask_editButton:focus {
     outline: 0;
+}
+
+.listBody__colTask_editButton:active {
+    transform: scale(0.9);
 }
 
 .listBody__colTask_editButtonImg {
@@ -443,9 +450,9 @@ li:hover {
 
 @media screen and (max-width: 480px) {
     :root {
-        --colDate: 8.33%;
-        --colPriority: 8.33%;
-        --colTask: 74.97%;
+        /*--colDate: 8.33%;*/
+        /*--colPriority: 8.33%;*/
+        --colTask: 66.64%;
         --colStatus: 8.33%;
     }
 
@@ -454,14 +461,20 @@ li:hover {
     }
 
     .listBody__colStatus {
-        display: block;
-        /*flex-direction: column;*/
+        display: flex;
+        flex-direction: column;
     }
 
     .delButton {
-        margin: 5px;
-        width: 50px;
-        height: 50px;
-        border: 1px solid transparent;
+        margin: 0;
+        width: calc(100% - 10px);
+        height: calc(50% - 10px);
+    }
+
+    .doneButton {
+        margin: 0;
+        width: calc(100% - 10px);
+        height: calc(50% - 10px);
+        border-radius: 25px;
     }
 }
