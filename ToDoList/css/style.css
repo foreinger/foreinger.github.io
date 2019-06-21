@@ -328,8 +328,8 @@ li:hover {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 5px;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 25px;
     outline: 0;
 }
@@ -354,8 +354,8 @@ li:hover {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 5px;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border: 1px solid transparent;
 }
 
@@ -528,13 +528,13 @@ li:hover {
     .delButton {
         margin: 2px auto;
         width: calc(100% - 10px);
-        height: calc(50% - 10px);
+        height: calc(45% - 10px);
     }
 
     .doneButton {
         margin: 2px auto;
         width: calc(100% - 10px);
-        height: calc(50% - 10px);
+        height: calc(45% - 10px);
         border-radius: 25px;
     }
 }
