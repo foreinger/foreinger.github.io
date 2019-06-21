@@ -456,6 +456,12 @@ li:hover {
         --colStatus: 8.33%;
     }
 
+    .inputBlock {
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+    }
+
     .listBody__row {
         height: 100px;
     }
