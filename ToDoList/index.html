@@ -19,15 +19,16 @@
             <div class="inputBlock">
                 <label for="inputBlock__text"></label>
                 <input placeholder="Type your task" class="inputBlock__text" maxlength="250" type="text" id="inputBlock__text" autocomplete="off">
-                <button class="inputBlock__button" id="newTask" type="button"></button>
-                <button class="inputBlock__requestButton" type="button" onclick="serverRequest()"></button>
+                <button class="inputBlock__button" id="newTask" type="button" title="Add new task"></button>
+                <button class="inputBlock__requestButton" type="button" title="Load more tasks"></button>
+                <button class="inputBlock__searchButton" type="button" title="Search in tasks"></button>
             </div>
         </div>
     </header>
     <main class="wrapper list">
         <div class="listHeader">
             <div class="listHeader__column listHeader__column_date">
-                <p class="listHeader__columnTitle">Сreated</p>
+                <p class="listHeader__columnTitle">Time</p>
      <button class="listHeader__sortButton dateSort">
                     <img src="svg/sort.svg" alt="sort">
                 </button>
@@ -65,6 +66,7 @@
             <button class="confirm__button confirm__button_no">cancel</button>
         </div>
     </div>
+
 
 </body>
 </html>

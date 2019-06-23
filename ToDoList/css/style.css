@@ -6,10 +6,10 @@
 
 :root {
     /*width of columns*/
-    --colDate: 16.66%;
-    --colPriority: 8.33%;
-    --colTask: 58.31%;
-    --colStatus: 16.66%;
+    --colDate: calc(16.66% - 10px);
+    --colPriority: calc(8.33% - 10px);
+    --colTask: calc(58.31% - 10px);
+    --colStatus: calc(16.66% - 10px);
 
 }
 html, body {
@@ -18,13 +18,14 @@ html, body {
 
 button {
     background: transparent;
-    outline: 0;
     border: 1px solid transparent;
     transition: transform .2s;
 }
 
 button:hover {
     transform: scale(1.1);
+    outline: 0;
+
 }
 
 li {
@@ -62,7 +63,7 @@ li:hover {
 }
 
 .inputBlock {
-    width: 50%;
+    width: 60%;
     margin: 0 auto 0 25%;
     display: flex;
     justify-content: flex-start;
@@ -70,7 +71,7 @@ li:hover {
 
 .inputBlock__text {
     height: 40px;
-    width: calc(100% - 80px);
+    width: calc(100% - 150px);
     font-size: 20px;
     border-left: 0;
     border-top: 0;
@@ -93,8 +94,17 @@ li:hover {
 
 }
 
+.inputBlock__button:active {
+    transform: scale(.9);
+
+}
+
+.inputBlock__button:focus {
+    outline: 0;
+}
+
 .inputBlock__requestButton {
-    margin-left: 10px;
+    margin-left: 5px;
     width: 40px;
     height: 40px;
     background-image: url("../svg/download.svg");
@@ -107,12 +117,17 @@ li:hover {
     outline: 0;
 }
 
-.inputBlock__button:active {
-    transform: scale(.9);
+.inputBlock__searchButton {
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../svg/search.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
 }
-
-.inputBlock__button:focus {
+.inputBlock__searchButton:focus {
     outline: 0;
 }
 
@@ -127,6 +142,7 @@ li:hover {
 }
 
 .listHeader__column {
+    margin: 0 5px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -195,6 +211,7 @@ li:hover {
 
 .listBody__colDate {
     width: var(--colDate);
+    margin: 0 5px;
     min-width: 80px;
     display: flex;
     align-items: center;
@@ -211,12 +228,14 @@ li:hover {
 
 .listBody__colPriority {
     width: var(--colPriority);
+    margin: 0 5px;
     display: flex;
 }
 
 .listBody__colPriorityValue {
     font-size: 30px;
-    width: 50%;
+    width: calc(50% - 5px);
+    margin-right: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,12 +255,12 @@ li:hover {
 }
 
 .listBody__colPriorityArrow_up {
+    width: 15px;
+    height: 15px;
     background-image: url("../svg/up-arrow.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 15px;
-    height: 15px;
 }
 
 .listBody__colPriorityArrow_up:active {
@@ -254,12 +273,12 @@ li:hover {
 }
 
 .listBody__colPriorityArrow_down {
+    width: 15px;
+    height: 15px;
     background-image: url("../svg/down-arrow.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 15px;
-    height: 15px;
 }
 
 .listBody__colPriorityArrow_down:active {
@@ -273,6 +292,7 @@ li:hover {
 
 .listBody__colTask {
     width: var(--colTask);
+    margin: 0 5px;
     display: flex;
     align-items: center;
 }
@@ -317,6 +337,7 @@ li:hover {
 
 .listBody__colStatus {
     width: var(--colStatus);
+    margin: 0 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -328,8 +349,8 @@ li:hover {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 5px;
-    width: 45px;
-    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
     border-radius: 25px;
     outline: 0;
 }
@@ -354,8 +375,8 @@ li:hover {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 5px;
-    width: 45px;
-    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
     border: 1px solid transparent;
 }
 
@@ -466,6 +487,7 @@ li:hover {
     border-bottom: 1px solid #25AE88;
 }
 
+
 /*style scroll-bar*/
 ::-webkit-scrollbar{
     width:6px;
@@ -491,8 +513,6 @@ li:hover {
 
 @media screen and (max-width: 480px) {
     :root {
-        /*--colDate: 8.33%;*/
-        /*--colPriority: 8.33%;*/
         --colTask: 63.64%;
         --colStatus: 11.33%;
     }
@@ -525,16 +545,15 @@ li:hover {
         flex-direction: column;
     }
 
-    .delButton {
-        margin: 2px auto;
-        width: calc(100% - 10px);
-        height: calc(45% - 10px);
-    }
-
     .doneButton {
         margin: 2px auto;
-        width: calc(100% - 10px);
-        height: calc(45% - 10px);
-        border-radius: 25px;
+        min-width: 35px;
+        min-height: 35px;
+    }
+
+    .delButton {
+        margin: 2px auto;
+        min-width: 35px;
+        min-height: 35px;
     }
 }

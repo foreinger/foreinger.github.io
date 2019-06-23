@@ -71,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     addButton.addEventListener("click", function () {
-        alert(window.innerWidth);
-        alert(window.outerWidth);
         let text = inputField.value;
         // check the input and if all right create new task
         validate(text, currentId);
@@ -118,13 +116,22 @@ document.addEventListener("DOMContentLoaded", function () {
         sortList(4);
     });
 
-    // bind event handler on search buttons
-    let searchField = document.querySelector(".searchBlock__text");
+    // bind event handler on search button and search field
+    let searchField = document.querySelector(".searchBlock__text"),
+        searchButton = document.querySelector(".inputBlock__searchButton");
+
+    searchButton.addEventListener("click", function () {
+        searchField.focus()
+    });
 
     searchField.addEventListener("input", function () {
         search(this.value);
     });
 
+    // bind event handler on button for load mor tasks from server
+    let requestButton = searchButton = document.querySelector(".inputBlock__requestButton");
+
+    requestButton.addEventListener("click", serverRequest);
 });
 
 
@@ -563,6 +570,7 @@ function sortList (sortingMethod) {
 
     document.querySelector(".listBody").innerHTML = "";
 
+    // display sorted list
     for (let i =0; i <= listLength; i++) {
         let currentTask = taskList[i];
         if (currentTask) {
@@ -594,7 +602,7 @@ function search(str) {
     } else {
         document.querySelector(".listBody").innerHTML = "";
         for (let i =0; i < listLength; i++) {
-            displayListItem(taskList[i])
+            displayListItem(taskList[i]);
         }
     }
 
@@ -607,7 +615,6 @@ function serverRequest() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(this.responseText);
-            console.log(response)
             for (let i = 0; i < response.length; i++) {
                 // set properties to the necessary format
                 response[i].curDate = "unknown";
@@ -622,10 +629,9 @@ function serverRequest() {
                 displayListItem(response[i]);
 
             }
-        } else {
-            console.log(this.readyState)
         }
     };
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+
