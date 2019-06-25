@@ -610,9 +610,10 @@ function search(str) {
 
 function serverRequest() {
 
-    let xhttp = new XMLHttpRequest(),
-        url = "https://jsonplaceholder.typicode.com/todos/";
-    xhttp.onreadystatechange = function () {
+    let request = new XMLHttpRequest(),
+        url = "https://jsonplaceholder.typicode.com/todos/",
+        preloader = document.querySelector(".preloader");
+    request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(this.responseText);
             for (let i = 0; i < response.length; i++) {
@@ -625,13 +626,18 @@ function serverRequest() {
                 delete response[i].title;
                 delete response[i].completed;
                 delete response[i].userId;
+                //hide preloader
+                if (preloader.style.height == "40px") {
+                    preloader.setAttribute("style","height:0px");
+                }
                 // display loaded list
                 displayListItem(response[i]);
-
             }
+        } else {
+            preloader.setAttribute("style","height:40px");
         }
     };
-    xhttp.open("GET", url, true);
-    xhttp.send();
+    request.open("GET", url, true);
+    request.send();
 }
 

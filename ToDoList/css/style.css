@@ -72,6 +72,7 @@ li:hover {
 .inputBlock__text {
     height: 40px;
     width: calc(100% - 150px);
+    padding-left: 10px;
     font-size: 20px;
     border-left: 0;
     border-top: 0;
@@ -192,6 +193,15 @@ li:hover {
     width: 15px;
 }
 
+.preloader {
+    height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: auto     16.66% auto 25%;
+    transition: height 0.5s;
+}
 
 .listBody {
     width: 100%;
@@ -206,7 +216,7 @@ li:hover {
     list-style-type: none;
     display: flex;
     opacity: 1;
-    transition: opacity 100ms linear, height 100ms linear, background-color .2s;
+    transition: opacity 100ms linear, height 100ms, background-color .2s;
 }
 
 .listBody__colDate {
@@ -474,6 +484,7 @@ li:hover {
 .searchBlock__text {
     height: 40px;
     width: 100%;
+    padding-left: 10px;
     font-size: 20px;
     border-left: 0;
     border-top: 0;
